@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, ShoppingCart, Heart, Pill, HandHeart, ChevronDown, Scale } from 'lucide-react';
+import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin, ShoppingCart, Heart, Pill, HandHeart, ChevronDown, Scale, ExternalLink } from 'lucide-react';
 
 const services = [
   { label: 'وفرة مارت', href: '/services/mart', icon: <ShoppingCart className="w-4 h-4" /> },
@@ -12,22 +12,41 @@ const services = [
 const aboutLinks = [
   { label: 'من نحن', href: '/about/company' },
   { label: 'رؤية 2030', href: '/about/strategy' },
-  { label: 'سجل كتاجر', href: '/partners/store' },
-  { label: 'سجل كمندوب', href: '/partners/rider' },
   { label: 'تواصل معنا', href: '/about/contact' },
+  { label: 'مركز المساعدة', href: '/about/support' },
 ];
 
 const legalLinks = [
   { label: 'سياسة الخصوصية', href: '/legal/privacy' },
   { label: 'شروط الاستخدام', href: '/legal/terms' },
   { label: 'ملفات الارتباط', href: '/legal/cookies' },
-  { label: 'مركز المساعدة', href: '/about/support' },
 ];
 
 const socialLinks = [
   { icon: <Facebook className="w-5 h-5" />, href: '#', label: 'Facebook' },
   { icon: <Instagram className="w-5 h-5" />, href: '#', label: 'Instagram' },
   { icon: <Linkedin className="w-5 h-5" />, href: '#', label: 'LinkedIn' },
+];
+
+const contactItems = [
+  {
+    icon: <MapPin className="w-[18px] h-[18px]" />,
+    label: 'العنوان',
+    value: 'فلسطين, غزة',
+    dir: undefined as string | undefined,
+  },
+  {
+    icon: <Phone className="w-[18px] h-[18px]" />,
+    label: 'الهاتف',
+    value: '+970 56 640 4550',
+    dir: 'ltr' as string | undefined,
+  },
+  {
+    icon: <Mail className="w-[18px] h-[18px]" />,
+    label: 'البريد',
+    value: 'info@wefrh.com',
+    dir: undefined as string | undefined,
+  },
 ];
 
 export default function Footer() {
@@ -37,7 +56,7 @@ export default function Footer() {
     <footer className="bg-primary-950 text-white">
       <div className="container-custom pt-14 pb-0">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
-          <div className="order-last lg:order-first lg:w-[320px] shrink-0 flex flex-col items-center lg:items-start text-center lg:text-right">
+          <div className="lg:w-[320px] shrink-0 flex flex-col items-center lg:items-start text-center lg:text-right">
             <Link to="/" className="inline-block mb-5">
               <img src="/wefrh_logo.png" alt="وفرة" className="h-14 w-auto brightness-0 invert" />
             </Link>
@@ -77,12 +96,12 @@ export default function Footer() {
 
             <div>
               <h3 className="font-bold text-base mb-5">عن وفرة</h3>
-              <div className="grid grid-cols-2 gap-x-4 gap-y-3 lg:flex lg:flex-wrap lg:gap-x-8 lg:gap-y-2">
+              <div className="flex flex-wrap gap-x-5 gap-y-2">
                 {aboutLinks.map((link) => (
                   <Link
                     key={link.href}
                     to={link.href}
-                    className="text-sm text-primary-300 hover:text-white transition-colors duration-200 py-1.5 px-3 rounded-lg hover:bg-primary-800/40 lg:p-0 lg:hover:bg-transparent"
+                    className="text-sm text-primary-300 hover:text-white transition-colors duration-200"
                   >
                     {link.label}
                   </Link>
@@ -91,35 +110,22 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="font-bold text-base mb-6 text-center lg:text-right">معلومات التواصل</h3>
-              <div className="flex flex-col items-center lg:items-start gap-5 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start sm:gap-10">
-                <div className="flex items-center gap-3">
-                  <span className="w-11 h-11 flex items-center justify-center rounded-full bg-accent-500/15">
-                    <MapPin className="w-5 h-5 text-accent-400" />
-                  </span>
-                  <div>
-                    <p className="text-xs text-primary-400 mb-0.5">العنوان</p>
-                    <p className="text-sm font-semibold text-white">فلسطين, غزة</p>
+              <h3 className="font-bold text-base mb-5">معلومات التواصل</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                {contactItems.map((item) => (
+                  <div
+                    key={item.label}
+                    className="flex items-center gap-3.5 p-4 rounded-xl bg-primary-900/40 border border-primary-800/30"
+                  >
+                    <span className="w-10 h-10 flex items-center justify-center rounded-lg bg-accent-500/10 text-accent-400 shrink-0">
+                      {item.icon}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="text-[11px] text-primary-500 mb-0.5 font-medium uppercase tracking-wide">{item.label}</p>
+                      <p className="text-sm font-semibold text-primary-100 truncate" dir={item.dir}>{item.value}</p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-11 h-11 flex items-center justify-center rounded-full bg-accent-500/15">
-                    <Phone className="w-5 h-5 text-accent-400" />
-                  </span>
-                  <div>
-                    <p className="text-xs text-primary-400 mb-0.5">للاتصال بنا</p>
-                    <p className="text-sm font-semibold text-white" dir="ltr">+970 56 640 4550</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="w-11 h-11 flex items-center justify-center rounded-full bg-white/[0.06]">
-                    <Mail className="w-5 h-5 text-primary-300" />
-                  </span>
-                  <div>
-                    <p className="text-xs text-primary-400 mb-0.5">البريد الإلكتروني</p>
-                    <p className="text-sm font-semibold text-white">info@wefrh.com</p>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
