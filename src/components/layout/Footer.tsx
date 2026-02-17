@@ -60,13 +60,13 @@ export default function Footer() {
 
           <div className="flex-1 space-y-10">
             <div>
-              <h3 className="font-bold text-base mb-5 text-center lg:text-right">خدماتنا</h3>
-              <div className="flex lg:flex-wrap gap-3 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 scrollbar-hide">
+              <h3 className="font-bold text-base mb-5">خدماتنا</h3>
+              <div className="grid grid-cols-2 gap-3 lg:flex lg:flex-wrap">
                 {services.map((s) => (
                   <Link
                     key={s.href}
                     to={s.href}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-primary-700/60 text-sm font-medium text-primary-200 hover:border-accent-500/50 hover:text-white transition-all duration-300 whitespace-nowrap shrink-0"
+                    className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-primary-900/60 border border-primary-800/50 text-sm font-medium text-primary-200 hover:bg-primary-800/60 hover:border-accent-500/40 hover:text-white transition-all duration-300 lg:rounded-full lg:px-5 lg:py-2.5 lg:bg-transparent lg:border-primary-700/60"
                   >
                     <span className="text-accent-400">{s.icon}</span>
                     {s.label}
@@ -76,13 +76,13 @@ export default function Footer() {
             </div>
 
             <div>
-              <h3 className="font-bold text-base mb-5 text-center lg:text-right">عن وفرة</h3>
-              <div className="flex lg:flex-wrap gap-x-6 gap-y-2 overflow-x-auto lg:overflow-x-visible pb-2 lg:pb-0 scrollbar-hide">
+              <h3 className="font-bold text-base mb-5">عن وفرة</h3>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-3 lg:flex lg:flex-wrap lg:gap-x-8 lg:gap-y-2">
                 {aboutLinks.map((link) => (
                   <Link
                     key={link.href}
                     to={link.href}
-                    className="text-sm text-primary-300 hover:text-white transition-colors duration-200 whitespace-nowrap shrink-0"
+                    className="text-sm text-primary-300 hover:text-white transition-colors duration-200 py-1.5 px-3 rounded-lg hover:bg-primary-800/40 lg:p-0 lg:hover:bg-transparent"
                   >
                     {link.label}
                   </Link>
