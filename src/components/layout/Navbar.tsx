@@ -20,8 +20,6 @@ import {
   Phone,
   Headphones,
   Download,
-  Mail,
-  MapPin,
   ChevronLeft,
 } from 'lucide-react';
 
@@ -62,9 +60,9 @@ const aboutItems: DropdownItem[] = [
 ];
 
 const navGroups: NavGroup[] = [
-  { label: 'خدماتنا', items: servicesItems },
-  { label: 'الشراكات', items: partnersItems },
-  { label: 'عن وفرة', items: aboutItems },
+  { label: 'الخدمات', items: servicesItems },
+  { label: 'الشركاء', items: partnersItems },
+  { label: 'من نحن', items: aboutItems },
 ];
 
 export default function Navbar() {
@@ -103,26 +101,24 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <TopBar />
-
       <nav
         className={`transition-all duration-300 ${
           scrolled
-            ? 'bg-white/95 backdrop-blur-xl shadow-[0_4px_30px_rgba(1,65,199,0.08)]'
-            : 'bg-white shadow-sm'
+            ? 'bg-primary-700/95 backdrop-blur-xl shadow-[0_4px_30px_rgba(1,65,199,0.25)]'
+            : 'bg-primary-600'
         }`}
       >
         <div className="container-custom">
-          <div className="flex items-center justify-between h-[68px]">
+          <div className="flex items-center justify-between h-[64px]">
             <Link to="/" className="flex items-center gap-3 shrink-0 group">
               <img
                 src="/wefrh_logo.png"
                 alt="وفرة"
-                className="h-9 w-auto transition-transform duration-300 group-hover:scale-105"
+                className="h-9 w-auto brightness-0 invert transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
 
-            <div className="hidden lg:flex items-center gap-1">
+            <div className="hidden lg:flex items-center gap-0.5">
               <NavLink to="/" active={location.pathname === '/'}>
                 الرئيسية
               </NavLink>
@@ -135,10 +131,10 @@ export default function Navbar() {
                   onMouseLeave={handleMouseLeave}
                 >
                   <button
-                    className={`flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                       activeDropdown === group.label
-                        ? 'text-primary-700 bg-primary-50'
-                        : 'text-gray-600 hover:text-primary-700 hover:bg-gray-50'
+                        ? 'text-white bg-white/15'
+                        : 'text-white/85 hover:text-white hover:bg-white/10'
                     }`}
                   >
                     {group.label}
@@ -165,18 +161,15 @@ export default function Navbar() {
             </div>
 
             <div className="hidden lg:flex items-center gap-3">
-              <Link
-                to="/about/contact"
-                className="px-4 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-primary-700 hover:bg-gray-50 transition-all duration-200"
-              >
-                تواصل معنا
-              </Link>
+              <button className="px-3.5 py-1.5 rounded-md text-sm font-semibold text-white border border-white/30 hover:bg-white/10 transition-all duration-200">
+                EN
+              </button>
               <Link
                 to="/#download"
-                className="inline-flex items-center gap-2 px-5 py-2.5 font-semibold text-sm rounded-lg bg-primary-600 text-white hover:bg-primary-700 shadow-md shadow-primary-600/20 hover:shadow-lg hover:shadow-primary-600/30 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-5 py-2.5 font-bold text-sm rounded-lg bg-accent-500 text-primary-900 hover:bg-accent-400 shadow-md shadow-black/10 hover:shadow-lg transition-all duration-300"
               >
                 <Download className="w-4 h-4" />
-                حمّل التطبيق
+                تحميل التطبيق
               </Link>
             </div>
 
@@ -184,8 +177,8 @@ export default function Navbar() {
               onClick={() => setMobileOpen(!mobileOpen)}
               className={`lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg transition-all duration-200 ${
                 mobileOpen
-                  ? 'bg-gray-100 text-gray-700'
-                  : 'text-gray-700 hover:bg-gray-50'
+                  ? 'bg-white/15 text-white'
+                  : 'text-white/90 hover:bg-white/10'
               }`}
               aria-label="القائمة"
             >
@@ -205,31 +198,6 @@ export default function Navbar() {
         currentPath={location.pathname}
       />
     </header>
-  );
-}
-
-function TopBar() {
-  return (
-    <div className="bg-primary-900 text-primary-100 hidden md:block">
-      <div className="container-custom">
-        <div className="flex items-center justify-between h-9 text-xs">
-          <div className="flex items-center gap-5">
-            <span className="flex items-center gap-1.5">
-              <Mail className="w-3.5 h-3.5 text-accent-500" />
-              info@wefrh.com
-            </span>
-            <span className="flex items-center gap-1.5">
-              <Phone className="w-3.5 h-3.5 text-accent-500" />
-              +970-XXX-XXXX
-            </span>
-          </div>
-          <div className="flex items-center gap-1.5">
-            <MapPin className="w-3.5 h-3.5 text-accent-500" />
-            <span>فلسطين - قطاع غزة</span>
-          </div>
-        </div>
-      </div>
-    </div>
   );
 }
 
@@ -284,7 +252,7 @@ function MobileSidebar({
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-between h-[68px] px-5 border-b border-white/[0.08]">
+        <div className="flex items-center justify-between h-[64px] px-5 border-b border-white/[0.08]">
           <Link to="/" onClick={onClose} className="shrink-0">
             <img src="/wefrh_logo.png" alt="وفرة" className="h-8 w-auto brightness-0 invert" />
           </Link>
@@ -297,7 +265,7 @@ function MobileSidebar({
           </button>
         </div>
 
-        <div className="h-[calc(100%-68px)] overflow-y-auto overscroll-contain">
+        <div className="h-[calc(100%-64px)] overflow-y-auto overscroll-contain">
           <div className="p-4 space-y-1">
             <Link
               to="/"
@@ -386,10 +354,10 @@ function NavLink({ to, active, children }: {
   return (
     <Link
       to={to}
-      className={`px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+      className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
         active
-          ? 'text-primary-700 bg-primary-50'
-          : 'text-gray-600 hover:text-primary-700 hover:bg-gray-50'
+          ? 'text-accent-400'
+          : 'text-white/85 hover:text-white hover:bg-white/10'
       }`}
     >
       {children}
