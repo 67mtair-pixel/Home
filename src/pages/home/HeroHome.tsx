@@ -78,20 +78,16 @@ export default function HeroHome() {
           </div>
 
           <div className="relative flex items-center justify-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
-            <div className="relative w-full max-w-md lg:max-w-lg mx-auto">
-              <div className="absolute -inset-6 bg-gradient-to-br from-primary-200/30 via-transparent to-accent-200/20 rounded-[2rem] blur-2xl pointer-events-none" />
+            <div className="relative w-full max-w-[340px] lg:max-w-[400px] mx-auto">
+              <div className="absolute -inset-8 bg-gradient-to-br from-primary-300/20 via-transparent to-accent-300/15 rounded-full blur-3xl pointer-events-none" />
 
-              <div className="relative bg-white rounded-[2rem] p-3 shadow-[0_20px_80px_rgba(1,65,199,0.1)] border border-gray-100/80">
-                <div className="relative rounded-[1.5rem] overflow-hidden aspect-[3/4]">
-                  <img
-                    src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=800"
-                    alt="خدمات وفرة"
-                    className="absolute inset-0 w-full h-full object-cover"
-                  />
-                </div>
-              </div>
+              <img
+                src="/pHGG80PpGMp5yFZOsjSdxsFw1pA.webp"
+                alt="تطبيق وفرة"
+                className="relative w-full h-auto drop-shadow-[0_20px_60px_rgba(1,65,199,0.15)]"
+              />
 
-              <div className="absolute -top-3 -left-4 lg:-left-10 bg-white rounded-xl shadow-lg shadow-black/[0.06] border border-gray-100 px-4 py-3 flex items-center gap-3 animate-float-slow">
+              <div className="absolute top-12 -left-4 lg:-left-10 bg-white rounded-xl shadow-lg shadow-black/[0.06] border border-gray-100 px-4 py-3 flex items-center gap-3 animate-float-slow">
                 <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-green-50 text-green-500">
                   <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="2">
                     <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
@@ -103,7 +99,7 @@ export default function HeroHome() {
                 </div>
               </div>
 
-              <div className="absolute -bottom-2 -right-3 lg:-right-8 bg-white rounded-xl shadow-lg shadow-black/[0.06] border border-gray-100 px-4 py-3 flex items-center gap-3 animate-float-delayed">
+              <div className="absolute bottom-16 -right-3 lg:-right-8 bg-white rounded-xl shadow-lg shadow-black/[0.06] border border-gray-100 px-4 py-3 flex items-center gap-3 animate-float-delayed">
                 <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary-50 text-primary-600">
                   <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="2">
                     <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" strokeLinecap="round" strokeLinejoin="round" />
