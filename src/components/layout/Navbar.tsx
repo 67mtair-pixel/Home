@@ -74,7 +74,7 @@ export default function Navbar() {
   const location = useLocation();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -101,94 +101,108 @@ export default function Navbar() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      <nav
-        className={`transition-all duration-300 ${
-          scrolled
-            ? 'bg-primary-700/95 backdrop-blur-xl shadow-[0_4px_30px_rgba(1,65,199,0.25)]'
-            : 'bg-primary-600'
-        }`}
-      >
-        <div className="container-custom">
-          <div className="flex items-center justify-between h-[64px]">
-            <Link to="/" className="flex items-center gap-3 shrink-0 group">
-              <img
-                src="/wefrh_logo.png"
-                alt="وفرة"
-                className="h-9 w-auto brightness-0 invert transition-transform duration-300 group-hover:scale-105"
-              />
-            </Link>
+      <div className="container-custom py-3">
+        <nav
+          className={`relative flex items-center justify-between rounded-2xl px-4 lg:px-5 h-[56px] transition-all duration-500 ${
+            scrolled
+              ? 'bg-white/80 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.06)] border border-gray-200/60'
+              : 'bg-primary-900/60 backdrop-blur-md border border-white/[0.08]'
+          }`}
+        >
+          <Link to="/" className="flex items-center gap-2.5 shrink-0 group">
+            <img
+              src="/wefrh_logo.png"
+              alt="وفرة"
+              className={`h-8 w-auto transition-all duration-500 ${
+                scrolled ? '' : 'brightness-0 invert'
+              }`}
+            />
+          </Link>
 
-            <div className="hidden lg:flex items-center gap-0.5">
-              <NavLink to="/" active={location.pathname === '/'}>
-                الرئيسية
-              </NavLink>
+          <div className="hidden lg:flex items-center gap-0.5">
+            <DesktopNavLink to="/" active={location.pathname === '/'} scrolled={scrolled}>
+              الرئيسية
+            </DesktopNavLink>
 
-              {navGroups.map((group) => (
+            {navGroups.map((group) => (
+              <div
+                key={group.label}
+                className="relative"
+                onMouseEnter={() => handleMouseEnter(group.label)}
+                onMouseLeave={handleMouseLeave}
+              >
+                <button
+                  className={`flex items-center gap-1 px-3.5 py-1.5 rounded-lg text-[13px] font-semibold transition-all duration-200 ${
+                    scrolled
+                      ? activeDropdown === group.label
+                        ? 'text-primary-700 bg-primary-50'
+                        : 'text-gray-600 hover:text-primary-700 hover:bg-gray-50'
+                      : activeDropdown === group.label
+                        ? 'text-white bg-white/15'
+                        : 'text-white/80 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  {group.label}
+                  <ChevronDown
+                    className={`w-3 h-3 transition-transform duration-200 ${
+                      activeDropdown === group.label ? 'rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
                 <div
-                  key={group.label}
-                  className="relative"
+                  className={`absolute top-full right-0 pt-3 transition-all duration-200 ${
+                    activeDropdown === group.label
+                      ? 'opacity-100 visible translate-y-0'
+                      : 'opacity-0 invisible -translate-y-2 pointer-events-none'
+                  }`}
                   onMouseEnter={() => handleMouseEnter(group.label)}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <button
-                    className={`flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                      activeDropdown === group.label
-                        ? 'text-white bg-white/15'
-                        : 'text-white/85 hover:text-white hover:bg-white/10'
-                    }`}
-                  >
-                    {group.label}
-                    <ChevronDown
-                      className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                        activeDropdown === group.label ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-
-                  <div
-                    className={`absolute top-full right-0 pt-2 transition-all duration-200 ${
-                      activeDropdown === group.label
-                        ? 'opacity-100 visible translate-y-0'
-                        : 'opacity-0 invisible -translate-y-2 pointer-events-none'
-                    }`}
-                    onMouseEnter={() => handleMouseEnter(group.label)}
-                    onMouseLeave={handleMouseLeave}
-                  >
-                    <DropdownPanel items={group.items} />
-                  </div>
+                  <DropdownPanel items={group.items} />
                 </div>
-              ))}
-            </div>
-
-            <div className="hidden lg:flex items-center gap-3">
-              <button className="px-3.5 py-1.5 rounded-md text-sm font-semibold text-white border border-white/30 hover:bg-white/10 transition-all duration-200">
-                EN
-              </button>
-              <Link
-                to="/#download"
-                className="inline-flex items-center gap-2 px-5 py-2.5 font-bold text-sm rounded-lg bg-accent-500 text-primary-900 hover:bg-accent-400 shadow-md shadow-black/10 hover:shadow-lg transition-all duration-300"
-              >
-                <Download className="w-4 h-4" />
-                تحميل التطبيق
-              </Link>
-            </div>
-
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className={`lg:hidden relative w-10 h-10 flex items-center justify-center rounded-lg transition-all duration-200 ${
-                mobileOpen
-                  ? 'bg-white/15 text-white'
-                  : 'text-white/90 hover:bg-white/10'
-              }`}
-              aria-label="القائمة"
-            >
-              <span className={`transition-all duration-300 ${mobileOpen ? 'rotate-90 scale-110' : ''}`}>
-                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </span>
-            </button>
+              </div>
+            ))}
           </div>
-        </div>
-      </nav>
+
+          <div className="hidden lg:flex items-center gap-2.5">
+            <button
+              className={`px-3 py-1 rounded-lg text-xs font-bold tracking-wide transition-all duration-300 ${
+                scrolled
+                  ? 'text-gray-500 border border-gray-200 hover:bg-gray-50'
+                  : 'text-white/70 border border-white/20 hover:bg-white/10 hover:text-white'
+              }`}
+            >
+              EN
+            </button>
+            <Link
+              to="/#download"
+              className={`inline-flex items-center gap-2 px-5 py-2 font-bold text-[13px] rounded-xl transition-all duration-300 ${
+                scrolled
+                  ? 'bg-primary-600 text-white hover:bg-primary-700 shadow-sm hover:shadow-md hover:shadow-primary-600/20'
+                  : 'bg-accent-500 text-primary-900 hover:bg-accent-400 shadow-sm'
+              }`}
+            >
+              <Download className="w-3.5 h-3.5" />
+              تحميل التطبيق
+            </Link>
+          </div>
+
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className={`lg:hidden relative w-9 h-9 flex items-center justify-center rounded-lg transition-all duration-200 ${
+              scrolled
+                ? 'text-gray-600 hover:bg-gray-100'
+                : 'text-white/90 hover:bg-white/10'
+            }`}
+            aria-label="القائمة"
+          >
+            <span className={`transition-all duration-300 ${mobileOpen ? 'rotate-90 scale-110' : ''}`}>
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </span>
+          </button>
+        </nav>
+      </div>
 
       <MobileSidebar
         open={mobileOpen}
@@ -203,7 +217,7 @@ export default function Navbar() {
 
 function DropdownPanel({ items }: { items: DropdownItem[] }) {
   return (
-    <div className="w-[320px] bg-white rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.12)] border border-gray-100 p-2 overflow-hidden">
+    <div className="w-[320px] bg-white/95 backdrop-blur-xl rounded-xl shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-gray-100 p-2 overflow-hidden">
       {items.map((item) => (
         <Link
           key={item.href}
@@ -241,27 +255,27 @@ function MobileSidebar({
   return (
     <>
       <div
-        className={`lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40 transition-opacity duration-300 ${
+        className={`lg:hidden fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-300 ${
           open ? 'opacity-100 visible' : 'opacity-0 invisible pointer-events-none'
         }`}
         onClick={onClose}
       />
 
       <aside
-        className={`lg:hidden fixed top-0 right-0 bottom-0 w-[300px] max-w-[85vw] bg-primary-950 z-50 transition-transform duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+        className={`lg:hidden fixed top-0 right-0 bottom-0 w-[300px] max-w-[85vw] bg-white z-50 transition-transform duration-400 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-2xl ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
-        <div className="flex items-center justify-between h-[64px] px-5 border-b border-white/[0.08]">
+        <div className="flex items-center justify-between h-[64px] px-5 border-b border-gray-100">
           <Link to="/" onClick={onClose} className="shrink-0">
-            <img src="/wefrh_logo.png" alt="وفرة" className="h-8 w-auto brightness-0 invert" />
+            <img src="/wefrh_logo.png" alt="وفرة" className="h-8 w-auto" />
           </Link>
           <button
             onClick={onClose}
-            className="w-9 h-9 flex items-center justify-center rounded-lg bg-white/[0.06] text-white/70 hover:bg-white/[0.12] hover:text-white transition-all"
+            className="w-9 h-9 flex items-center justify-center rounded-lg bg-gray-50 text-gray-400 hover:bg-gray-100 hover:text-gray-600 transition-all"
             aria-label="إغلاق"
           >
-            <X className="w-4.5 h-4.5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
@@ -270,10 +284,10 @@ function MobileSidebar({
             <Link
               to="/"
               onClick={onClose}
-              className={`flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all ${
+              className={`flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-sm transition-all ${
                 currentPath === '/'
-                  ? 'bg-accent-500/15 text-accent-400'
-                  : 'text-white/80 hover:bg-white/[0.06] hover:text-white'
+                  ? 'bg-primary-50 text-primary-700'
+                  : 'text-gray-600 hover:bg-gray-50 hover:text-gray-900'
               }`}
             >
               الرئيسية
@@ -283,11 +297,11 @@ function MobileSidebar({
               <div key={group.label}>
                 <button
                   onClick={() => onToggleExpand(group.label)}
-                  className="flex items-center justify-between w-full px-4 py-3 rounded-xl text-white/80 font-medium text-sm hover:bg-white/[0.06] hover:text-white transition-all"
+                  className="flex items-center justify-between w-full px-4 py-3 rounded-xl text-gray-600 font-semibold text-sm hover:bg-gray-50 hover:text-gray-900 transition-all"
                 >
                   {group.label}
                   <ChevronDown
-                    className={`w-4 h-4 text-white/40 transition-transform duration-300 ${
+                    className={`w-4 h-4 text-gray-400 transition-transform duration-300 ${
                       expanded === group.label ? 'rotate-180' : ''
                     }`}
                   />
@@ -298,22 +312,22 @@ function MobileSidebar({
                     expanded === group.label ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'
                   }`}
                 >
-                  <div className="py-1 pr-3 mr-4 border-r border-white/[0.08] space-y-0.5">
+                  <div className="py-1 pr-3 mr-4 border-r-2 border-primary-100 space-y-0.5">
                     {group.items.map((item) => (
                       <Link
                         key={item.href}
                         to={item.href}
                         onClick={onClose}
-                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-white/[0.06] transition-all group/link"
+                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-primary-50/60 transition-all group/link"
                       >
-                        <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-white/[0.06] text-primary-300 group-hover/link:text-accent-400 transition-colors shrink-0">
+                        <span className="flex items-center justify-center w-8 h-8 rounded-lg bg-primary-50 text-primary-500 group-hover/link:bg-primary-600 group-hover/link:text-white transition-all shrink-0">
                           {item.icon}
                         </span>
                         <div>
-                          <p className="text-sm font-medium text-white/90">{item.label}</p>
-                          <p className="text-[11px] text-white/40">{item.desc}</p>
+                          <p className="text-sm font-medium text-gray-700">{item.label}</p>
+                          <p className="text-[11px] text-gray-400">{item.desc}</p>
                         </div>
-                        <ChevronLeft className="w-3.5 h-3.5 text-white/20 mr-auto opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                        <ChevronLeft className="w-3.5 h-3.5 text-gray-300 mr-auto opacity-0 group-hover/link:opacity-100 transition-opacity" />
                       </Link>
                     ))}
                   </div>
@@ -321,11 +335,11 @@ function MobileSidebar({
               </div>
             ))}
 
-            <div className="pt-5 mt-4 border-t border-white/[0.08] space-y-2.5">
+            <div className="pt-5 mt-4 border-t border-gray-100 space-y-2.5">
               <Link
                 to="/about/contact"
                 onClick={onClose}
-                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-white/[0.12] text-white/90 font-semibold hover:bg-white/[0.06] transition-all text-sm"
+                className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-200 text-gray-600 font-semibold hover:bg-gray-50 transition-all text-sm"
               >
                 <Phone className="w-4 h-4" />
                 تواصل معنا
@@ -333,7 +347,7 @@ function MobileSidebar({
               <Link
                 to="/#download"
                 onClick={onClose}
-                className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-accent-500 text-primary-950 font-bold hover:bg-accent-400 transition-all text-sm"
+                className="flex items-center justify-center gap-2 px-4 py-3.5 rounded-xl bg-primary-600 text-white font-bold hover:bg-primary-700 transition-all text-sm shadow-sm"
               >
                 <Download className="w-4 h-4" />
                 حمّل التطبيق
@@ -346,18 +360,23 @@ function MobileSidebar({
   );
 }
 
-function NavLink({ to, active, children }: {
+function DesktopNavLink({ to, active, scrolled, children }: {
   to: string;
   active: boolean;
+  scrolled: boolean;
   children: React.ReactNode;
 }) {
   return (
     <Link
       to={to}
-      className={`px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
-        active
-          ? 'text-accent-400'
-          : 'text-white/85 hover:text-white hover:bg-white/10'
+      className={`px-3.5 py-1.5 rounded-lg text-[13px] font-semibold transition-all duration-200 ${
+        scrolled
+          ? active
+            ? 'text-primary-700 bg-primary-50'
+            : 'text-gray-600 hover:text-primary-700 hover:bg-gray-50'
+          : active
+            ? 'text-accent-400'
+            : 'text-white/80 hover:text-white hover:bg-white/10'
       }`}
     >
       {children}
