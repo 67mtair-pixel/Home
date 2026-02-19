@@ -121,41 +121,48 @@ export default function Navbar() {
             الرئيسية
           </DesktopNavLink>
 
-          {navGroups.map((group) => (
-            <div
-              key={group.label}
-              className="relative"
-              onMouseEnter={() => handleMouseEnter(group.label)}
-              onMouseLeave={handleMouseLeave}
-            >
-              <button
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-lg text-[15px] font-semibold transition-all duration-200 ${
-                  activeDropdown === group.label
-                    ? 'text-accent-400 bg-white/10'
-                    : 'text-white hover:text-accent-400 hover:bg-white/5'
-                }`}
-              >
-                {group.label}
-                <ChevronDown
-                  className={`w-4 h-4 transition-transform duration-300 ${
-                    activeDropdown === group.label ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
+          {navGroups.map((group) => {
+            const isAnyItemActive = group.items.some(item => location.pathname === item.href);
 
+            return (
               <div
-                className={`absolute top-full right-0 pt-3 transition-all duration-300 ${
-                  activeDropdown === group.label
-                    ? 'opacity-100 visible translate-y-0'
-                    : 'opacity-0 invisible -translate-y-3 pointer-events-none'
-                }`}
+                key={group.label}
+                className="relative"
                 onMouseEnter={() => handleMouseEnter(group.label)}
                 onMouseLeave={handleMouseLeave}
               >
-                <DropdownPanel items={group.items} />
+                <button
+                  className={`relative flex items-center gap-2 px-4 py-2.5 text-[15px] font-semibold transition-all duration-200 ${
+                    isAnyItemActive || activeDropdown === group.label
+                      ? 'text-accent-400'
+                      : 'text-white hover:text-accent-400'
+                  }`}
+                >
+                  {group.label}
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-300 ${
+                      activeDropdown === group.label ? 'rotate-180' : ''
+                    }`}
+                  />
+                  {isAnyItemActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-400 rounded-full" />
+                  )}
+                </button>
+
+                <div
+                  className={`absolute top-full right-0 pt-3 transition-all duration-300 ${
+                    activeDropdown === group.label
+                      ? 'opacity-100 visible translate-y-0'
+                      : 'opacity-0 invisible -translate-y-3 pointer-events-none'
+                  }`}
+                  onMouseEnter={() => handleMouseEnter(group.label)}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <DropdownPanel items={group.items} />
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="hidden lg:flex items-center gap-3">
@@ -194,25 +201,41 @@ export default function Navbar() {
 }
 
 function DropdownPanel({ items }: { items: DropdownItem[] }) {
+  const location = useLocation();
+
   return (
-    <div className="w-[340px] bg-primary-800 rounded-xl shadow-2xl border border-white/10 p-2 overflow-hidden">
-      {items.map((item) => (
-        <Link
-          key={item.href}
-          to={item.href}
-          className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-white/10 transition-all duration-200 group/item"
-        >
-          <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-white/10 text-white group-hover/item:bg-accent-400 group-hover/item:text-primary-900 transition-all duration-200 shrink-0">
-            {item.icon}
-          </span>
-          <div className="min-w-0 flex-1">
-            <p className="text-[14px] font-semibold text-white group-hover/item:text-accent-400 transition-colors leading-tight">
-              {item.label}
-            </p>
-            <p className="text-[12px] text-white/60 mt-0.5 leading-tight">{item.desc}</p>
-          </div>
-        </Link>
-      ))}
+    <div className="w-[320px] bg-white rounded-xl shadow-2xl border border-gray-200 p-2 overflow-hidden">
+      {items.map((item) => {
+        const isActive = location.pathname === item.href;
+        return (
+          <Link
+            key={item.href}
+            to={item.href}
+            className={`flex items-center gap-3 px-4 py-3.5 rounded-lg transition-all duration-200 group/item ${
+              isActive
+                ? 'bg-primary-50'
+                : 'hover:bg-gray-50'
+            }`}
+          >
+            <span className={`flex items-center justify-center w-9 h-9 rounded-lg transition-all duration-200 shrink-0 ${
+              isActive
+                ? 'bg-primary-100 text-primary-700'
+                : 'bg-gray-100 text-gray-600 group-hover/item:bg-primary-100 group-hover/item:text-primary-700'
+            }`}>
+              {item.icon}
+            </span>
+            <div className="min-w-0 flex-1 text-right">
+              <p className={`text-[15px] font-semibold leading-tight ${
+                isActive
+                  ? 'text-primary-800'
+                  : 'text-gray-800 group-hover/item:text-primary-800'
+              }`}>
+                {item.label}
+              </p>
+            </div>
+          </Link>
+        );
+      })}
     </div>
   );
 }
@@ -265,21 +288,21 @@ function MobileSidebar({
               className={`flex items-center justify-center px-5 py-4 rounded-xl font-semibold text-[16px] transition-all duration-200 ${
                 currentPath === '/'
                   ? 'bg-accent-400 text-primary-900'
-                  : 'text-white border border-white/20 hover:bg-white/10'
+                  : 'text-white border-2 border-white/20 hover:bg-white/10'
               }`}
             >
               الرئيسية
             </Link>
 
             {navGroups.map((group) => (
-              <div key={group.label} className="border border-white/20 rounded-xl overflow-hidden">
+              <div key={group.label} className="border-2 border-white/20 rounded-xl overflow-hidden">
                 <button
                   onClick={() => onToggleExpand(group.label)}
                   className="flex items-center justify-between w-full px-5 py-4 text-white font-semibold text-[16px] hover:bg-white/10 transition-all duration-200"
                 >
                   {group.label}
                   <ChevronDown
-                    className={`w-5 h-5 text-white transition-transform duration-300 ${
+                    className={`w-4 h-4 text-white transition-transform duration-300 ${
                       expanded === group.label ? 'rotate-180' : ''
                     }`}
                   />
@@ -290,35 +313,53 @@ function MobileSidebar({
                     expanded === group.label ? 'max-h-[800px]' : 'max-h-0'
                   }`}
                 >
-                  <div className="px-2 pb-2 pt-1 space-y-1 bg-white/5">
-                    {group.items.map((item) => (
-                      <Link
-                        key={item.href}
-                        to={item.href}
-                        onClick={onClose}
-                        className="flex items-center gap-3 px-3 py-3 rounded-lg hover:bg-white/10 transition-all duration-200 group/link"
-                      >
-                        <span className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/10 text-white group-hover/link:bg-accent-400 group-hover/link:text-primary-900 transition-all duration-200 shrink-0">
-                          {item.icon}
-                        </span>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-[14px] font-semibold text-white leading-tight">{item.label}</p>
-                          <p className="text-[12px] text-white/60 mt-0.5 leading-tight">{item.desc}</p>
-                        </div>
-                      </Link>
-                    ))}
+                  <div className="px-3 pb-3 pt-2 space-y-1.5 bg-primary-700/30">
+                    {group.items.map((item) => {
+                      const isActive = currentPath === item.href;
+                      return (
+                        <Link
+                          key={item.href}
+                          to={item.href}
+                          onClick={onClose}
+                          className={`flex items-center justify-end gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+                            isActive
+                              ? 'bg-accent-400 text-primary-900'
+                              : 'text-white hover:bg-white/10'
+                          }`}
+                        >
+                          <div className="flex-1 min-w-0 text-right">
+                            <p className={`text-[15px] font-semibold leading-tight ${
+                              isActive ? 'text-primary-900' : 'text-white'
+                            }`}>
+                              {item.label}
+                            </p>
+                          </div>
+                          <span className={`flex items-center justify-center w-5 h-5 shrink-0 ${
+                            isActive ? 'text-primary-900' : 'text-white'
+                          }`}>
+                            {item.icon}
+                          </span>
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
             ))}
 
             <div className="pt-3 space-y-2">
+              <button
+                className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl border-2 border-white/20 text-white font-medium hover:bg-white/10 transition-all duration-200 text-[15px]"
+              >
+                <span className="text-xs">🌐</span>
+                English
+              </button>
+
               <Link
                 to="/#download"
                 onClick={onClose}
-                className="flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-accent-400 text-primary-900 font-semibold hover:bg-accent-500 transition-all duration-200 text-[16px]"
+                className="flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-accent-400 text-primary-900 font-bold hover:bg-accent-500 transition-all duration-200 text-[16px] shadow-lg"
               >
-                <Download className="w-5 h-5" />
                 تحميل التطبيق
               </Link>
             </div>
@@ -338,13 +379,16 @@ function DesktopNavLink({ to, active, scrolled, children }: {
   return (
     <Link
       to={to}
-      className={`px-4 py-2.5 rounded-lg text-[15px] font-semibold transition-all duration-200 ${
+      className={`relative px-4 py-2.5 text-[15px] font-semibold transition-all duration-200 ${
         active
-          ? 'text-accent-400 bg-white/10'
-          : 'text-white hover:text-accent-400 hover:bg-white/5'
+          ? 'text-accent-400'
+          : 'text-white hover:text-accent-400'
       }`}
     >
       {children}
+      {active && (
+        <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-400 rounded-full" />
+      )}
     </Link>
   );
 }
