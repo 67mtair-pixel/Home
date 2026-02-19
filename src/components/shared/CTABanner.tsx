@@ -23,13 +23,13 @@ export default function CTABanner({
   const { ref, isVisible } = useScrollAnimation();
 
   const bgClass = {
-    blue: 'bg-gradient-to-bl from-primary-600 to-primary-700',
-    dark: 'bg-gradient-to-bl from-primary-900 to-primary-800',
-    accent: 'bg-gradient-to-bl from-accent-500 to-accent-600',
+    blue: 'bg-gradient-to-br from-primary-600 via-primary-700 to-primary-800',
+    dark: 'bg-gradient-to-br from-primary-800 via-primary-700 to-primary-600',
+    accent: 'bg-gradient-to-br from-accent-500 via-accent-600 to-accent-700',
   }[variant];
 
-  const textClass = variant === 'accent' ? 'text-primary-900' : 'text-white';
-  const descClass = variant === 'accent' ? 'text-primary-800' : 'text-primary-100';
+  const textClass = variant === 'accent' ? 'text-white' : 'text-white';
+  const descClass = variant === 'accent' ? 'text-white/90' : 'text-blue-100';
 
   return (
     <section
@@ -46,10 +46,10 @@ export default function CTABanner({
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
             to={primaryHref}
-            className={`px-8 py-3.5 rounded-xl font-semibold transition-all hover:shadow-lg ${
+            className={`px-8 py-3.5 rounded-xl font-semibold transition-all hover:shadow-lg transform hover:scale-105 ${
               variant === 'accent'
-                ? 'bg-primary-900 text-white hover:bg-primary-800'
-                : 'bg-accent-500 text-primary-900 hover:bg-accent-600 hover:shadow-accent-500/25'
+                ? 'bg-white text-accent-600 hover:bg-blue-50'
+                : 'bg-white text-primary-600 hover:bg-blue-50'
             }`}
           >
             {primaryLabel}
@@ -57,10 +57,10 @@ export default function CTABanner({
           {secondaryLabel && secondaryHref && (
             <Link
               to={secondaryHref}
-              className={`px-8 py-3.5 rounded-xl font-semibold border-2 transition-all ${
+              className={`px-8 py-3.5 rounded-xl font-semibold border-2 transition-all transform hover:scale-105 ${
                 variant === 'accent'
-                  ? 'border-primary-900 text-primary-900 hover:bg-primary-900 hover:text-white'
-                  : 'border-white/30 text-white hover:bg-white/10'
+                  ? 'border-white text-white hover:bg-white hover:text-accent-600'
+                  : 'border-white text-white hover:bg-white hover:text-primary-600'
               }`}
             >
               {secondaryLabel}

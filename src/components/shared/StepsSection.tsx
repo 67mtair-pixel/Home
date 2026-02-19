@@ -30,9 +30,9 @@ function StepCard({ step, index }: { step: Step; index: number }) {
       className={`relative text-center ${isVisible ? 'animate-fade-in-up' : 'opacity-0'}`}
       style={{ animationDelay: `${index * 0.15}s` }}
     >
-      <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary-50 text-primary-600 mb-4">
+      <div className="relative inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-primary-50 to-primary-100 text-primary-600 mb-4 shadow-sm">
         {step.icon}
-        <span className="absolute -top-1 -right-1 w-7 h-7 bg-accent-500 text-primary-900 rounded-full text-xs font-bold flex items-center justify-center">
+        <span className="absolute -top-1 -right-1 w-7 h-7 bg-gradient-to-br from-accent-500 to-accent-600 text-white rounded-full text-xs font-bold flex items-center justify-center shadow-md">
           {step.number}
         </span>
       </div>

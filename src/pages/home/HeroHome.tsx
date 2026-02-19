@@ -17,8 +17,8 @@ export default function HeroHome() {
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="text-center lg:text-right">
-            <div className="inline-flex items-center gap-2 bg-primary-50 border border-primary-200/60 rounded-full px-4 py-1.5 mb-7 animate-fade-in">
-              <Zap className="w-4 h-4 text-accent-500" />
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-50 to-accent-50 border border-primary-300/60 rounded-full px-4 py-1.5 mb-7 animate-fade-in shadow-sm">
+              <Zap className="w-4 h-4 text-accent-600" />
               <span className="text-sm font-semibold text-primary-700">
                 المنصة المركزية الأولى في غزة
               </span>
@@ -39,7 +39,7 @@ export default function HeroHome() {
             <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-10 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <Link
                 to="/#download"
-                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-primary-600 hover:bg-primary-700 text-white font-bold rounded-xl transition-all hover:shadow-lg hover:shadow-primary-600/25 text-sm"
+                className="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold rounded-xl transition-all hover:shadow-lg hover:shadow-primary-600/30 text-sm transform hover:scale-105"
               >
                 <ArrowLeft className="w-4 h-4" />
                 حمّل التطبيق الآن
@@ -66,7 +66,7 @@ export default function HeroHome() {
               <div className="flex flex-col">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-accent-500 text-accent-500" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-accent-600 text-accent-600" />
                   ))}
                   <span className="text-sm font-bold text-primary-900 mr-1">4.9</span>
                 </div>
@@ -88,7 +88,7 @@ export default function HeroHome() {
               />
 
               <div className="absolute top-12 -left-4 lg:-left-10 bg-white rounded-xl shadow-lg shadow-black/[0.06] border border-gray-100 px-4 py-3 flex items-center gap-3 animate-float-slow">
-                <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-green-50 text-green-500">
+                <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-success-50 text-success-600">
                   <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="2">
                     <path d="M20 6L9 17l-5-5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
@@ -100,7 +100,7 @@ export default function HeroHome() {
               </div>
 
               <div className="absolute bottom-16 -right-3 lg:-right-8 bg-white rounded-xl shadow-lg shadow-black/[0.06] border border-gray-100 px-4 py-3 flex items-center gap-3 animate-float-delayed">
-                <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary-50 text-primary-600">
+                <span className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-primary-50 to-primary-100 text-primary-600">
                   <svg viewBox="0 0 24 24" fill="none" className="w-5 h-5" stroke="currentColor" strokeWidth="2">
                     <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" strokeLinecap="round" strokeLinejoin="round" />
                     <path d="M9 22V12h6v10" strokeLinecap="round" strokeLinejoin="round" />

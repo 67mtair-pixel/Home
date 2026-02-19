@@ -17,7 +17,7 @@ export default function VisionSection() {
 
   return (
     <section className="relative py-20 md:py-28 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950" />
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-800 via-primary-700 to-primary-900" />
       <div className="absolute inset-0 opacity-[0.04]" style={{
         backgroundImage: 'radial-gradient(circle at 1px 1px, white 1px, transparent 0)',
         backgroundSize: '40px 40px',
@@ -25,14 +25,14 @@ export default function VisionSection() {
 
       <div className="container-custom relative z-10">
         <div className="text-center mb-14">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent-500/15 text-accent-400 text-xs font-bold tracking-wide mb-5">
+          <span className="inline-block px-4 py-1.5 rounded-full bg-accent-500/20 text-accent-400 text-xs font-bold tracking-wide mb-5 shadow-sm">
             المستقبل الرقمي
           </span>
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             رؤية وفرة للإعمار
           </h2>
-          <div className="w-16 h-1 rounded-full bg-accent-500 mx-auto mb-5" />
-          <p className="text-base md:text-lg text-primary-200 max-w-2xl mx-auto leading-relaxed">
+          <div className="w-16 h-1 rounded-full bg-gradient-to-r from-accent-400 to-accent-600 mx-auto mb-5" />
+          <p className="text-base md:text-lg text-blue-100 max-w-2xl mx-auto leading-relaxed">
             من تطبيق توصيل إلى بنية تحتية رقمية شاملة تساهم في إعادة بناء اقتصاد غزة وتمكين مجتمعها
           </p>
         </div>
@@ -52,7 +52,7 @@ export default function VisionSection() {
                 {item.icon}
               </span>
               <p className="relative text-sm font-bold text-white mb-1">{item.label}</p>
-              <p className="relative text-xs text-primary-300 leading-relaxed">{item.desc}</p>
+              <p className="relative text-xs text-blue-200 leading-relaxed">{item.desc}</p>
             </div>
           ))}
         </div>

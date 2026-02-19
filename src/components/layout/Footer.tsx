@@ -53,14 +53,14 @@ export default function Footer() {
   const [legalOpen, setLegalOpen] = useState(false);
 
   return (
-    <footer className="bg-primary-950 text-white">
+    <footer className="bg-primary-900 text-white">
       <div className="container-custom pt-14 pb-0">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-16">
           <div className="lg:w-[320px] shrink-0 flex flex-col items-center lg:items-start text-center lg:text-right">
             <Link to="/" className="inline-block mb-5">
               <img src="/wefrh_logo.png" alt="وفرة" className="h-14 w-auto brightness-0 invert" />
             </Link>
-            <p className="text-primary-300 text-sm leading-[1.9] mb-6 max-w-xs lg:max-w-none">
+            <p className="text-blue-200 text-sm leading-[1.9] mb-6 max-w-xs lg:max-w-none">
               وفرة (Wefrh Mall P.J.S.C) هي المنصة المركزية الأولى في غزة، تجمع بين التسوق، الصحة، والخدمات اللوجستية في تطبيق واحد فائق السرعة.
             </p>
             <div className="flex items-center gap-3">
@@ -69,7 +69,7 @@ export default function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 flex items-center justify-center rounded-full border border-primary-700/50 text-primary-300 hover:border-accent-500/50 hover:text-white transition-all duration-300"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-primary-700/50 text-blue-200 hover:border-accent-500 hover:bg-accent-500 hover:text-white transition-all duration-300"
                 >
                   {social.icon}
                 </a>
@@ -85,9 +85,9 @@ export default function Footer() {
                   <Link
                     key={s.href}
                     to={s.href}
-                    className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-primary-900/60 border border-primary-800/50 text-sm font-medium text-primary-200 hover:bg-primary-800/60 hover:border-accent-500/40 hover:text-white transition-all duration-300 lg:rounded-full lg:px-5 lg:py-2.5 lg:bg-transparent lg:border-primary-700/60"
+                    className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-primary-800/60 border border-primary-700/50 text-sm font-medium text-blue-100 hover:bg-primary-700/60 hover:border-accent-500/60 hover:text-white transition-all duration-300 lg:rounded-full lg:px-5 lg:py-2.5 lg:bg-transparent lg:border-primary-700/60"
                   >
-                    <span className="text-accent-400">{s.icon}</span>
+                    <span className="text-accent-500">{s.icon}</span>
                     {s.label}
                   </Link>
                 ))}

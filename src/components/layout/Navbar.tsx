@@ -105,7 +105,7 @@ export default function Navbar() {
         className={`relative flex items-center justify-between px-6 lg:px-8 h-[72px] transition-all duration-500 ${
           scrolled
             ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200/80'
-            : 'bg-gradient-to-r from-primary-900 via-primary-800 to-primary-900 backdrop-blur-md shadow-xl'
+            : 'bg-gradient-to-r from-primary-700 via-primary-600 to-primary-700 backdrop-blur-md shadow-xl'
         }`}
       >
         <Link to="/" className="flex items-center gap-3 shrink-0 group z-10">
@@ -178,8 +178,8 @@ export default function Navbar() {
             to="/#download"
             className={`inline-flex items-center gap-2.5 px-6 py-3 font-bold text-[15px] rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${
               scrolled
-                ? 'bg-gradient-to-r from-primary-600 to-primary-700 text-white hover:from-primary-700 hover:to-primary-800'
-                : 'bg-gradient-to-r from-accent-400 to-accent-500 text-primary-900 hover:from-accent-500 hover:to-accent-600'
+                ? 'bg-gradient-to-r from-accent-500 to-accent-600 text-white hover:from-accent-600 hover:to-accent-700'
+                : 'bg-gradient-to-r from-accent-400 to-accent-500 text-white hover:from-accent-500 hover:to-accent-600'
             }`}
           >
             <Download className="w-4 h-4" />
@@ -260,7 +260,7 @@ function MobileSidebar({
       />
 
       <aside
-        className={`lg:hidden fixed top-0 right-0 bottom-0 w-[340px] max-w-[90vw] bg-gradient-to-b from-primary-900 via-primary-800 to-primary-900 z-50 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-2xl ${
+        className={`lg:hidden fixed top-0 right-0 bottom-0 w-[340px] max-w-[90vw] bg-gradient-to-b from-primary-700 via-primary-600 to-primary-700 z-50 transition-transform duration-500 ease-[cubic-bezier(0.4,0,0.2,1)] shadow-2xl ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
@@ -284,7 +284,7 @@ function MobileSidebar({
               onClick={onClose}
               className={`flex items-center gap-3 px-5 py-4 rounded-2xl font-bold text-[15px] transition-all duration-300 ${
                 currentPath === '/'
-                  ? 'bg-accent-500 text-primary-900 shadow-lg'
+                  ? 'bg-accent-500 text-white shadow-lg'
                   : 'text-white/90 bg-white/10 hover:bg-white/15 backdrop-blur-sm'
               }`}
             >
@@ -316,9 +316,9 @@ function MobileSidebar({
                         key={item.href}
                         to={item.href}
                         onClick={onClose}
-                        className="flex items-center gap-3.5 px-4 py-3.5 rounded-xl bg-primary-950/40 hover:bg-primary-950/60 backdrop-blur-sm transition-all duration-300 group/link border border-white/5"
+                        className="flex items-center gap-3.5 px-4 py-3.5 rounded-xl bg-primary-800/40 hover:bg-primary-800/60 backdrop-blur-sm transition-all duration-300 group/link border border-white/5"
                       >
-                        <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 text-white group-hover/link:bg-accent-500 group-hover/link:text-primary-900 transition-all duration-300 shrink-0 shadow-sm">
+                        <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 text-white group-hover/link:bg-accent-500 group-hover/link:text-white transition-all duration-300 shrink-0 shadow-sm">
                           {item.icon}
                         </span>
                         <div className="flex-1 min-w-0">
@@ -337,7 +337,7 @@ function MobileSidebar({
               <Link
                 to="/#download"
                 onClick={onClose}
-                className="flex items-center justify-center gap-3 px-5 py-4 rounded-2xl bg-gradient-to-r from-accent-400 to-accent-500 text-primary-900 font-bold hover:from-accent-500 hover:to-accent-600 transition-all duration-300 text-[15px] shadow-xl transform hover:scale-105"
+                className="flex items-center justify-center gap-3 px-5 py-4 rounded-2xl bg-gradient-to-r from-accent-500 to-accent-600 text-white font-bold hover:from-accent-600 hover:to-accent-700 transition-all duration-300 text-[15px] shadow-xl transform hover:scale-105"
               >
                 <Download className="w-5 h-5" />
                 تحميل التطبيق

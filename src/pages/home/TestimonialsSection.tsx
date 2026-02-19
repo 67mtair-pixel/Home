@@ -54,11 +54,11 @@ function TestimonialCard({ name, role, text, index }: {
       }`}
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <Quote className="w-8 h-8 text-primary-100 mb-4" />
+      <Quote className="w-8 h-8 text-primary-200 mb-4" />
       <p className="text-sm text-gray-700 leading-relaxed mb-6">{text}</p>
       <div className="flex items-center gap-1 mb-4">
         {[...Array(5)].map((_, i) => (
-          <Star key={i} className="w-4 h-4 text-accent-500 fill-accent-500" />
+          <Star key={i} className="w-4 h-4 text-accent-600 fill-accent-600" />
         ))}
       </div>
       <div>

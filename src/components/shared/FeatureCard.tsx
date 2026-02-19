@@ -18,7 +18,7 @@ export default function FeatureCard({ icon, title, description, index = 0 }: Fea
       }`}
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      <span className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary-50 text-primary-600 mb-4 group-hover:bg-primary-600 group-hover:text-white transition-colors">
+      <span className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-primary-50 to-primary-100 text-primary-600 mb-4 group-hover:bg-gradient-to-br group-hover:from-primary-600 group-hover:to-primary-700 group-hover:text-white transition-all duration-300 group-hover:scale-110 shadow-sm group-hover:shadow-md">
         {icon}
       </span>
       <h3 className="text-lg font-bold text-primary-900 mb-2">{title}</h3>
