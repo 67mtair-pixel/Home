@@ -33,6 +33,10 @@ export default {
           900: '#4d4000',
         },
       },
+      boxShadow: {
+        'nav': '0 4px 30px rgba(0, 0, 0, 0.1)',
+        'nav-scroll': '0 8px 40px rgba(0, 0, 0, 0.15)',
+      },
     },
   },
   plugins: [],

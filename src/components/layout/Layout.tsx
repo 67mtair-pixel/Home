@@ -8,7 +8,7 @@ export default function Layout() {
     <div className="min-h-screen flex flex-col">
       <ScrollToTop />
       <Navbar />
-      <main className="flex-1 relative bg-gradient-to-b from-[#e8f4fc] via-[#eef6fb] to-white">
+      <main className="flex-1 relative bg-gradient-to-b from-[#e8f4fc] via-[#eef6fb] to-white pt-[72px]">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{

@@ -16,20 +16,20 @@
   }
 
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
   }
 
   ::-webkit-scrollbar-track {
-    background: #dce8ff;
+    background: #e8f0ff;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #0146c7;
-    border-radius: 4px;
+    background: linear-gradient(to bottom, #1a6fff, #0146c7);
+    border-radius: 6px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #013aa3;
+    background: linear-gradient(to bottom, #0146c7, #013aa3);
   }
 }
 
