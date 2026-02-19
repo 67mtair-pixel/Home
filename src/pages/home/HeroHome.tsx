@@ -17,8 +17,8 @@ export default function HeroHome() {
       <div className="container-custom relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           <div className="text-center lg:text-right">
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-50 to-accent-50 border border-primary-300/60 rounded-full px-4 py-1.5 mb-7 animate-fade-in shadow-sm">
-              <Zap className="w-4 h-4 text-accent-600" />
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-50 to-accent-50 border border-primary-200/50 rounded-full px-4 py-1.5 mb-7 animate-fade-in shadow-sm">
+              <Zap className="w-4 h-4 text-accent-500" />
               <span className="text-sm font-semibold text-primary-700">
                 المنصة المركزية الأولى في غزة
               </span>
@@ -66,7 +66,7 @@ export default function HeroHome() {
               <div className="flex flex-col">
                 <div className="flex items-center gap-1">
                   {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-accent-600 text-accent-600" />
+                    <Star key={i} className="w-3.5 h-3.5 fill-accent-400 text-accent-400" />
                   ))}
                   <span className="text-sm font-bold text-primary-900 mr-1">4.9</span>
                 </div>

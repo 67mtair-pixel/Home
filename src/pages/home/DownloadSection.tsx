@@ -7,7 +7,7 @@ export default function DownloadSection() {
   return (
     <section id="download" className="section-padding bg-gradient-to-br from-primary-700 via-primary-600 to-primary-700 relative overflow-hidden">
       <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-1/4 w-64 h-64 bg-accent-500 rounded-full blur-3xl" />
+        <div className="absolute top-10 left-1/4 w-64 h-64 bg-accent-400 rounded-full blur-3xl" />
         <div className="absolute bottom-10 right-1/3 w-80 h-80 bg-primary-400 rounded-full blur-3xl" />
       </div>
       <div
@@ -54,8 +54,8 @@ export default function DownloadSection() {
                   </div>
                 </div>
               </div>
-              <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-accent-400 to-accent-600 rounded-2xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-xs text-center">مجاني</span>
+              <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-accent-400 to-accent-500 rounded-2xl flex items-center justify-center shadow-lg">
+                <span className="text-primary-900 font-bold text-xs text-center">مجاني</span>
               </div>
             </div>
           </div>

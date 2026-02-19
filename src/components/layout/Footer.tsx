@@ -69,7 +69,7 @@ export default function Footer() {
                   key={social.label}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 flex items-center justify-center rounded-full border border-primary-700/50 text-blue-200 hover:border-accent-500 hover:bg-accent-500 hover:text-white transition-all duration-300"
+                  className="w-10 h-10 flex items-center justify-center rounded-full border border-primary-700/50 text-blue-200 hover:border-accent-400 hover:bg-accent-400 hover:text-primary-900 transition-all duration-300"
                 >
                   {social.icon}
                 </a>
@@ -85,7 +85,7 @@ export default function Footer() {
                   <Link
                     key={s.href}
                     to={s.href}
-                    className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-primary-800/60 border border-primary-700/50 text-sm font-medium text-blue-100 hover:bg-primary-700/60 hover:border-accent-500/60 hover:text-white transition-all duration-300 lg:rounded-full lg:px-5 lg:py-2.5 lg:bg-transparent lg:border-primary-700/60"
+                    className="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-primary-800/60 border border-primary-700/50 text-sm font-medium text-blue-100 hover:bg-primary-700/60 hover:border-accent-400/60 hover:text-white transition-all duration-300 lg:rounded-full lg:px-5 lg:py-2.5 lg:bg-transparent lg:border-primary-700/60"
                   >
                     <span className="text-accent-500">{s.icon}</span>
                     {s.label}
@@ -117,7 +117,7 @@ export default function Footer() {
                     key={item.label}
                     className="flex items-center gap-3.5 p-4 rounded-xl bg-primary-900/40 border border-primary-800/30"
                   >
-                    <span className="w-10 h-10 flex items-center justify-center rounded-lg bg-accent-500/10 text-accent-400 shrink-0">
+                    <span className="w-10 h-10 flex items-center justify-center rounded-lg bg-accent-400/15 text-accent-400 shrink-0">
                       {item.icon}
                     </span>
                     <div className="min-w-0">

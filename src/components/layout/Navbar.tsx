@@ -178,8 +178,8 @@ export default function Navbar() {
             to="/#download"
             className={`inline-flex items-center gap-2.5 px-6 py-3 font-bold text-[15px] rounded-xl transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 ${
               scrolled
-                ? 'bg-gradient-to-r from-accent-500 to-accent-600 text-white hover:from-accent-600 hover:to-accent-700'
-                : 'bg-gradient-to-r from-accent-400 to-accent-500 text-white hover:from-accent-500 hover:to-accent-600'
+                ? 'bg-gradient-to-r from-accent-400 to-accent-500 text-primary-900 hover:from-accent-500 hover:to-accent-600'
+                : 'bg-gradient-to-r from-accent-400 to-accent-500 text-primary-900 hover:from-accent-500 hover:to-accent-600'
             }`}
           >
             <Download className="w-4 h-4" />
@@ -284,7 +284,7 @@ function MobileSidebar({
               onClick={onClose}
               className={`flex items-center gap-3 px-5 py-4 rounded-2xl font-bold text-[15px] transition-all duration-300 ${
                 currentPath === '/'
-                  ? 'bg-accent-500 text-white shadow-lg'
+                  ? 'bg-accent-400 text-primary-900 shadow-lg'
                   : 'text-white/90 bg-white/10 hover:bg-white/15 backdrop-blur-sm'
               }`}
             >
@@ -318,7 +318,7 @@ function MobileSidebar({
                         onClick={onClose}
                         className="flex items-center gap-3.5 px-4 py-3.5 rounded-xl bg-primary-800/40 hover:bg-primary-800/60 backdrop-blur-sm transition-all duration-300 group/link border border-white/5"
                       >
-                        <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 text-white group-hover/link:bg-accent-500 group-hover/link:text-white transition-all duration-300 shrink-0 shadow-sm">
+                        <span className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/10 text-white group-hover/link:bg-accent-400 group-hover/link:text-primary-900 transition-all duration-300 shrink-0 shadow-sm">
                           {item.icon}
                         </span>
                         <div className="flex-1 min-w-0">
@@ -337,7 +337,7 @@ function MobileSidebar({
               <Link
                 to="/#download"
                 onClick={onClose}
-                className="flex items-center justify-center gap-3 px-5 py-4 rounded-2xl bg-gradient-to-r from-accent-500 to-accent-600 text-white font-bold hover:from-accent-600 hover:to-accent-700 transition-all duration-300 text-[15px] shadow-xl transform hover:scale-105"
+                className="flex items-center justify-center gap-3 px-5 py-4 rounded-2xl bg-gradient-to-r from-accent-400 to-accent-500 text-primary-900 font-bold hover:from-accent-500 hover:to-accent-600 transition-all duration-300 text-[15px] shadow-xl transform hover:scale-105"
               >
                 <Download className="w-5 h-5" />
                 تحميل التطبيق

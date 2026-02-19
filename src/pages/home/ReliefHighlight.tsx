@@ -68,7 +68,7 @@ export default function ReliefHighlight() {
                   { step: '٤', text: 'الاقتصاد المحلي ينمو والمستفيد يحصل على كرامته' },
                 ].map((item) => (
                   <div key={item.step} className="flex items-center gap-4 bg-white/10 rounded-xl p-4">
-                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-accent-400 to-accent-600 text-white font-bold text-sm shrink-0 shadow-md">
+                    <span className="flex items-center justify-center w-8 h-8 rounded-full bg-gradient-to-br from-accent-400 to-accent-500 text-primary-900 font-bold text-sm shrink-0 shadow-md">
                       {item.step}
                     </span>
                     <span className="text-sm">{item.text}</span>
